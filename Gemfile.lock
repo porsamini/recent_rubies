@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rvm (1.11.3.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rvm (~> 1.11, >= 1.11.3)
+
+BUNDLED WITH
+   1.15.4
