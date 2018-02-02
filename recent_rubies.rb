@@ -2,13 +2,13 @@ require 'net/http'
 require 'rvm'
 
 ##
-# This script installs the recently released & stable versions of rubies 
+# This script installs the recently released & stable versions of rubies
 # including all their fix versions from the ruby community.
 # The number of recent versions can be optionally provided in the arguments
 # to this scripts, otherwise, the number of recent versions defaults to 2
 #
 #
-class RecentRubies 
+class RecentRubies
   DEFAULT_COUNT = 2
 
   def initialize
@@ -29,7 +29,7 @@ class RecentRubies
         RVM.run "rvm remove #{ruby}"
       end
       return true
-    rescue Exception
+    rescue Exception => e
       return false
     end
   end
@@ -38,10 +38,10 @@ class RecentRubies
   def install
     begin
       new_rubies.each do |ruby|
-        RVM.run "rvm install #{ruby}" 
+        RVM.run "rvm install #{ruby}"
       end
       return true
-    rescue Exception
+    rescue Exception => e
       return false
     end
   end
@@ -56,7 +56,11 @@ class RecentRubies
 
   private
 
-  def recent_versions 
+  # For DEFAULT_COUNT = 2
+  # Scan all ruby versions from ruby-lang website in descending order
+  # until the loop runs into "patch versions"(version[4] == '0'), twice
+  # => ["2.5.0", "2.4.3", "2.4.2", "2.4.1", "2.4.0"]
+  def recent_versions
     return @recent_versions unless @recent_versions.empty?
     uri = URI('https://www.ruby-lang.org/en/downloads/releases/')
     response = Net::HTTP.get(uri)
