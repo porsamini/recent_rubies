@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-# source 'http://repo.release.cerner.corp/main/rubygems/'
-# source 'http://repo.release.cerner.corp/internal/rubygems/'
 
-gem 'rvm', '~> 1.11', '>= 1.11.3'
+gem 'rvm', '~> 1.11'
+gem 'rspec', '~> 3.7'
 
