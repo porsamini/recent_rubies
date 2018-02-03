@@ -1,5 +1,4 @@
 require 'net/http'
-# require 'rvm'
 
 ##
 # This script installs the recently released & stable versions of rubies
